@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zongze Li</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #60a5fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    h1 {
+      margin: 0;
+    }
+    .tagline {
+      color: #93c5fd;
+    }
+    .info {
+      line-height: 1.8;
+    }
+    .chat-box {
+      display: flex;
+      flex-direction: column;
+      height: 300px;
+    }
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+    .message {
+      margin: 5px 0;
+    }
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="card header">
+      <div class="avatar">Z</div>
+      <div>
+        <h1>Zongze Li (李宗泽)</h1>
+        <div class="tagline">AI Enthusiast @ Sichuan University</div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="card">
+      <h2>About Me</h2>
+      <div class="info">
+        <p><strong>Research:</strong> LLM Reasoning, GNN, AI4Science</p>
+        <p><strong>Interests:</strong> Piano, Calligraphy, Philosophy</p>
+        <p><strong>Personality:</strong> A "normal-looking" mad thinker</p>
+      </div>
+    </div>
+
+    <!-- Chat -->
+    <div class="card">
+      <h2>Ask My Digital Twin</h2>
+      <div class="chat-box">
+        <div class="messages" id="messages"></div>
+        <input id="input" placeholder="Ask me anything...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('input');
+      const messages = document.getElementById('messages');
+
+      const userMsg = input.value;
+      if (!userMsg) return;
+
+      messages.innerHTML += `<div class="message">🧑 ${userMsg}</div>`;
+
+      let reply = "";
+
+      if (userMsg.includes("what") || userMsg.includes("做什么")) {
+        reply = "I am currently building my personal website and exploring LLM reasoning.";
+      } else if (userMsg.includes("project") || userMsg.includes("作品")) {
+        reply = "I work on LLM reasoning, GNN, and AI for science projects.";
+      } else if (userMsg.includes("contact") || userMsg.includes("联系")) {
+        reply = "You can reach me via email or academic platforms (to be added).";
+      } else {
+        reply = "Interesting question! I'm especially interested in AI and creativity.";
+      }
+
+      messages.innerHTML += `<div class="message">🤖 ${reply}</div>`;
+      input.value = "";
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+</body>
+</html>
